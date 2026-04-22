@@ -1,0 +1,19 @@
+{
+  "name": "ai-supply-chain-dashboard",
+  "version": "1.0.0",
+  "description": "Dashboard tracking the financial performance and roles of the biggest players across the AI supply chain five-layer cake (Energy, Chips, Infrastructure, Models, Application).",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "axios": "^1.7.7",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "mongoose": "^8.7.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

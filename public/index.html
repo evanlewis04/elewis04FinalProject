@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>AI Supply Chain Dashboard</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="/style.css" />
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+    </head>
+    <body>
+        <header class="site-header">
+            <div class="brand">
+                <div class="brand-mark">AI</div>
+                <div>
+                    <h1>AI Supply Chain Dashboard</h1>
+                    <p class="tagline">
+                        Live financial telemetry across the five-layer cake — Energy &middot; Chips &middot;
+                        Infrastructure &middot; Models &middot; Application
+                    </p>
+                </div>
+            </div>
+            <nav class="layer-nav" id="layer-nav"></nav>
+        </header>
+
+        <main>
+            <section class="overview-section">
+                <h2>Layer Performance Overview</h2>
+                <p class="section-sub">
+                    Average daily change of the tracked companies in each layer (live from Finnhub). Refreshes when you
+                    reload.
+                </p>
+                <div class="chart-card">
+                    <canvas id="layerChart"></canvas>
+                </div>
+            </section>
+
+            <section id="layers-section"></section>
+
+            <section class="forms-section">
+                <div class="form-card">
+                    <h2>Add Analyst Note</h2>
+                    <p class="section-sub">
+                        Notes are stored in MongoDB via Mongoose so the team can capture context next to the live
+                        financials.
+                    </p>
+                    <form id="note-form" class="stack-form">
+                        <label>
+                            Company
+                            <select name="ticker" id="note-ticker" required></select>
+                        </label>
+                        <label>
+                            Your name
+                            <input name="author" id="note-author" type="text" required maxlength="60" />
+                        </label>
+                        <label>
+                            Note
+                            <textarea name="body" id="note-body" rows="3" required maxlength="1000"></textarea>
+                        </label>
+                        <button type="submit">Save note</button>
+                        <p class="form-status" id="note-status" role="status"></p>
+                    </form>
+                </div>
+
+                <div class="form-card">
+                    <h2>Add to Watchlist</h2>
+                    <p class="section-sub">
+                        Add any publicly traded ticker (e.g. <code>SMCI</code>, <code>ARM</code>) and the dashboard will
+                        validate it against Finnhub before saving.
+                    </p>
+                    <form id="watch-form" class="stack-form">
+                        <label>
+                            Ticker
+                            <input
+                                name="ticker"
+                                id="watch-ticker"
+                                type="text"
+                                required
+                                maxlength="10"
+                                placeholder="e.g. SMCI"
+                            />
+                        </label>
+                        <label>
+                            Layer
+                            <select name="layer" id="watch-layer" required>
+                                <option value="energy">Energy</option>
+                                <option value="chips">Chips</option>
+                                <option value="infrastructure">Infrastructure</option>
+                                <option value="models">Models</option>
+                                <option value="application">Application</option>
+                            </select>
+                        </label>
+                        <label>
+                            Note (optional)
+                            <input name="note" id="watch-note" type="text" maxlength="200" />
+                        </label>
+                        <button type="submit">Add to watchlist</button>
+                        <p class="form-status" id="watch-status" role="status"></p>
+                    </form>
+                </div>
+            </section>
+
+            <section class="watchlist-section">
+                <h2>Watchlist</h2>
+                <p class="section-sub">Custom tickers tracked by the team. Live quotes update on each page load.</p>
+                <div id="watchlist-grid" class="card-grid"></div>
+            </section>
+
+            <section class="notes-section">
+                <h2>Latest Analyst Notes</h2>
+                <div id="notes-feed" class="notes-feed"></div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <p>
+                Data: <a href="https://finnhub.io/" target="_blank" rel="noopener">Finnhub Stock API</a> &middot; Built
+                for CMSC335 Final Project
+            </p>
+        </footer>
+
+        <script src="/app.js"></script>
+    </body>
+</html>

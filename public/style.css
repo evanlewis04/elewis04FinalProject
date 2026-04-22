@@ -1,0 +1,422 @@
+/* CSS requirement: relies on background-color, color, font-size and a Google font (Space Grotesk + JetBrains Mono). */
+
+:root {
+    --bg: #0b1020;
+    --bg-elev: #141a31;
+    --bg-card: #1a2142;
+    --border: #2a3358;
+    --text: #e8ecf8;
+    --text-dim: #9aa3c7;
+    --accent: #6ea8ff;
+    --accent-strong: #3b82f6;
+    --positive: #34d399;
+    --negative: #f87171;
+
+    --layer-energy: #f59e0b;
+    --layer-chips: #10b981;
+    --layer-infrastructure: #3b82f6;
+    --layer-models: #8b5cf6;
+    --layer-application: #ef4444;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: "Space Grotesk", system-ui, -apple-system, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    min-height: 100vh;
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+code {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.85em;
+    background-color: var(--bg-elev);
+    color: var(--accent);
+    padding: 0.1em 0.4em;
+    border-radius: 4px;
+}
+
+/* ---------- Header ---------- */
+.site-header {
+    background-color: var(--bg-elev);
+    border-bottom: 1px solid var(--border);
+    padding: 1.75rem 2rem 1rem;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.brand-mark {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--accent-strong), #8b5cf6);
+    color: var(--text);
+    display: grid;
+    place-items: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+
+.site-header h1 {
+    margin: 0;
+    font-size: 1.75rem;
+    font-weight: 700;
+}
+
+.tagline {
+    margin: 0.15rem 0 0;
+    color: var(--text-dim);
+    font-size: 0.95rem;
+}
+
+.layer-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.layer-nav button {
+    background-color: var(--bg-card);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-left-width: 4px;
+    padding: 0.45rem 0.9rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.9rem;
+    transition: transform 0.1s ease, background-color 0.1s ease;
+}
+
+.layer-nav button:hover {
+    background-color: #20284f;
+    transform: translateY(-1px);
+}
+
+/* ---------- Main layout ---------- */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    display: grid;
+    gap: 2.5rem;
+}
+
+section h2 {
+    margin: 0 0 0.25rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.section-sub {
+    margin: 0 0 1rem;
+    color: var(--text-dim);
+    font-size: 0.95rem;
+}
+
+/* ---------- Chart ---------- */
+.chart-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.5rem;
+    height: 320px;
+}
+
+/* ---------- Layer cards ---------- */
+.layer-block {
+    background-color: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.layer-block header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.layer-pill {
+    display: inline-block;
+    color: var(--bg);
+    font-weight: 600;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+}
+
+.layer-block h3 {
+    margin: 0;
+    font-size: 1.3rem;
+}
+
+.layer-desc {
+    color: var(--text-dim);
+    margin: 0 0 1.25rem;
+    font-size: 0.95rem;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;
+}
+
+.company-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    transition: transform 0.12s ease, border-color 0.12s ease;
+}
+
+.company-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+}
+
+.company-card .ticker-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.company-card .ticker {
+    font-family: "JetBrains Mono", monospace;
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--accent);
+}
+
+.company-card .name {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.company-card .role {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    margin: 0.1rem 0 0.4rem;
+}
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 1rem;
+}
+
+.change-up {
+    color: var(--positive);
+}
+
+.change-down {
+    color: var(--negative);
+}
+
+.muted {
+    color: var(--text-dim);
+    font-size: 0.85rem;
+}
+
+/* ---------- Forms ---------- */
+.forms-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+.form-card {
+    background-color: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem;
+}
+
+.stack-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.stack-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.stack-form input,
+.stack-form select,
+.stack-form textarea {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.6rem 0.7rem;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    text-transform: none;
+    letter-spacing: normal;
+}
+
+.stack-form input:focus,
+.stack-form select:focus,
+.stack-form textarea:focus {
+    outline: 2px solid var(--accent);
+    border-color: var(--accent);
+}
+
+.stack-form button {
+    background-color: var(--accent-strong);
+    color: white;
+    border: none;
+    padding: 0.7rem 1rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background-color 0.1s ease;
+}
+
+.stack-form button:hover {
+    background-color: var(--accent);
+}
+
+.form-status {
+    margin: 0;
+    min-height: 1.2em;
+    font-size: 0.85rem;
+    color: var(--text-dim);
+}
+
+.form-status.success {
+    color: var(--positive);
+}
+
+.form-status.error {
+    color: var(--negative);
+}
+
+/* ---------- Notes ---------- */
+.notes-feed {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.note-item {
+    background-color: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.85rem 1rem;
+    display: grid;
+    gap: 0.35rem;
+}
+
+.note-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.note-author {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+}
+
+.note-body {
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.note-delete {
+    background: transparent;
+    color: var(--text-dim);
+    border: none;
+    cursor: pointer;
+    font-size: 0.8rem;
+    padding: 0;
+}
+
+.note-delete:hover {
+    color: var(--negative);
+}
+
+/* ---------- Watchlist ---------- */
+.watchlist-section .company-card {
+    position: relative;
+}
+
+.watch-delete {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.6rem;
+    background: transparent;
+    color: var(--text-dim);
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.watch-delete:hover {
+    color: var(--negative);
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+    text-align: center;
+    padding: 1.5rem;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--border);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 600px) {
+    main {
+        padding: 1.25rem;
+        gap: 1.75rem;
+    }
+    .site-header {
+        padding: 1.25rem;
+    }
+    .site-header h1 {
+        font-size: 1.4rem;
+    }
+}
