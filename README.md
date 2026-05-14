@@ -4,13 +4,13 @@
 
 **App Description:** A dashboard that tracks the financial performance and role of the largest publicly traded companies across the AI supply chain, organized by the five-layer cake (Energy, Chips, Infrastructure, Models, Application). Users can add analyst notes and a custom watchlist, both stored in MongoDB.
 
-**YouTube Video Link:** https://www.youtube.com/REPLACE_WITH_YOUR_VIDEO
+**YouTube Video Link:** https://youtu.be/kF0BHg9MMY0
 
 **APIs:** Finnhub Stock API (https://finnhub.io/docs/api) — used for live stock quotes (`/quote`) and company profiles (`/stock/profile2`).
 
 **Contact Email:** evanmlewis21@gmail.com
 
-**Deployed App Link:** https://REPLACE_WITH_RENDER_URL.onrender.com
+**Deployed App Link:** https://elewis04finalproject.onrender.com
 
 **AI Use:** 1. Claude Code
 
